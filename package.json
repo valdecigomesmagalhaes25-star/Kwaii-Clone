@@ -18,6 +18,6 @@
     "build": "mkdir -p www && cp -r components www/ && cp index.html index.tsx metadata.json types.ts App.tsx constants.tsx www/ 2>/dev/null || true",
     "ionic:build": "npm run build",
     "ionic:cap-add-android": "npx cap add android",
-    "postinstall": "npx cap add android || echo 'Plataforma Android ja existe'"
+    "postinstall": "npx cap add android || echo 'Android platform already exists'"
   }
 }

@@ -1,15 +1,15 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { AuthScreen, User, AppTab, Video } from './types';
-import Login from './components/Auth/Login';
-import SignUp from './components/Auth/SignUp';
-import ForgotPassword from './components/Auth/ForgotPassword';
-import Feed from './components/Feed/Feed';
-import BottomNav from './components/Navigation/BottomNav';
-import Profile from './components/Profile/Profile';
-import Rewards from './components/Rewards/Rewards';
-import UploadModal from './components/Upload/UploadModal';
-import { initialVideos } from './constants';
+import React, { useState, useEffect } from 'react';
+import { AuthScreen, User, AppTab, Video } from './types.ts';
+import Login from './components/Auth/Login.tsx';
+import SignUp from './components/Auth/SignUp.tsx';
+import ForgotPassword from './components/Auth/ForgotPassword.tsx';
+import Feed from './components/Feed/Feed.tsx';
+import BottomNav from './components/Navigation/BottomNav.tsx';
+import Profile from './components/Profile/Profile.tsx';
+import Rewards from './components/Rewards/Rewards.tsx';
+import UploadModal from './components/Upload/UploadModal.tsx';
+import { initialVideos } from './constants.tsx';
 
 const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -20,17 +20,21 @@ const App: React.FC = () => {
 
   // Simulate persistent session and initial data
   useEffect(() => {
-    const savedUser = localStorage.getItem('kwai_user');
-    if (savedUser) {
-      setCurrentUser(JSON.parse(savedUser));
-    }
-    
-    const savedVideos = localStorage.getItem('kwai_videos');
-    if (savedVideos) {
-      setVideos(JSON.parse(savedVideos));
-    } else {
-      setVideos(initialVideos);
-      localStorage.setItem('kwai_videos', JSON.stringify(initialVideos));
+    try {
+      const savedUser = localStorage.getItem('kwai_user');
+      if (savedUser) {
+        setCurrentUser(JSON.parse(savedUser));
+      }
+      
+      const savedVideos = localStorage.getItem('kwai_videos');
+      if (savedVideos) {
+        setVideos(JSON.parse(savedVideos));
+      } else {
+        setVideos(initialVideos);
+        localStorage.setItem('kwai_videos', JSON.stringify(initialVideos));
+      }
+    } catch (e) {
+      console.error("Erro ao carregar dados iniciais:", e);
     }
   }, []);
 
@@ -96,7 +100,7 @@ const App: React.FC = () => {
           <Profile user={currentUser} onLogout={handleLogout} />
         )}
         {currentTab === AppTab.DISCOVER && (
-          <div className="flex items-center justify-center h-full text-gray-500">Discover section coming soon</div>
+          <div className="flex items-center justify-center h-full text-gray-500">Aba Descobrir em breve</div>
         )}
       </div>
 

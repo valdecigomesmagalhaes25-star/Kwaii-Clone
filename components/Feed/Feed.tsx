@@ -1,7 +1,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
-import { Video } from '../../types';
-import VideoItem from './VideoItem';
+import { Video } from '../../types.ts';
+import VideoItem from './VideoItem.tsx';
 
 interface FeedProps {
   videos: Video[];
@@ -37,20 +37,14 @@ const Feed: React.FC<FeedProps> = ({ videos, onReward, userId }) => {
   }, [activeVideoId, videos]);
 
   const handleView = (videoId: string) => {
-    // 1. Give reward to viewer
-    onReward(0.002); // $0.002 per view
-
-    // 2. Give reward to publisher (Simulated)
+    onReward(0.002);
     const storedVideos = JSON.parse(localStorage.getItem('kwai_videos') || '[]');
     const videoIndex = storedVideos.findIndex((v: Video) => v.id === videoId);
     
     if (videoIndex !== -1) {
       storedVideos[videoIndex].views += 1;
       localStorage.setItem('kwai_videos', JSON.stringify(storedVideos));
-      
-      // In a real app, you'd trigger a balance update on the server for storedVideos[videoIndex].publisherId
-      // Here we simulate the publisher getting money if they were another user
-      console.log(`Publisher ${storedVideos[videoIndex].publisherName} earned $0.01 for view`);
+      console.log(`Publicador ${storedVideos[videoIndex].publisherName} ganhou bônus.`);
     }
   };
 
@@ -69,13 +63,11 @@ const Feed: React.FC<FeedProps> = ({ videos, onReward, userId }) => {
         </div>
       ))}
       
-      {/* Top Tabs */}
       <div className="absolute top-0 left-0 w-full flex justify-center gap-6 p-4 pt-10 z-50 pointer-events-none">
         <button className="text-white font-bold text-lg opacity-70 pointer-events-auto">Seguindo</button>
         <button className="text-white font-bold text-lg border-b-2 border-white pointer-events-auto">Para Você</button>
       </div>
 
-      {/* Kwai Gold Coin (Simulated Reward Animation) */}
       <div className="absolute top-10 right-4 z-50">
         <div className="relative w-14 h-14 bg-yellow-400 rounded-full border-4 border-yellow-600 flex items-center justify-center animate-bounce shadow-lg">
           <span className="text-yellow-900 font-black text-xl">K</span>
