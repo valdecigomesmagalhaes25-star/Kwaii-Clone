@@ -15,9 +15,9 @@
     "@capacitor/cli": "^6.0.0"
   },
   "scripts": {
-    "build": "echo 'Preparando arquivos web...'",
-    "ionic:build": "echo 'Build do Ionic executada'",
+    "build": "mkdir -p www && cp index.html index.tsx metadata.json types.ts App.tsx constants.tsx www/ && cp -r components www/ 2>/dev/null || true",
+    "ionic:build": "npm run build",
     "ionic:cap-add-android": "npx cap add android",
-    "postinstall": "npx cap add android || echo 'Android já existe ou falhou ao adicionar, continuando...'"
+    "postinstall": "npx cap add android || echo 'Android platform already exists'"
   }
 }

@@ -2,7 +2,7 @@
 {
   "appId": "com.kwaiclone.rewards",
   "appName": "Kwai Clone",
-  "webDir": ".",
+  "webDir": "www",
   "server": {
     "androidScheme": "https",
     "cleartext": true
