@@ -1,0 +1,8 @@
+{
+  "name": "Kwai Clone - Win Rewards",
+  "description": "A Kwai-style vertical video platform where users share YouTube links and earn money for publishing and watching content. Features full auth, monetization tracking, and Kwai-inspired UI.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
