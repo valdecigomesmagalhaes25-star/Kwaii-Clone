@@ -1,0 +1,8 @@
+
+{
+  "name": "Kwai Clone",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

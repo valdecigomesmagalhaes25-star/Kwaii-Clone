@@ -1,0 +1,11 @@
+
+{
+  "name": "KwaiClone",
+  "displayName": "Kwai Clone",
+  "expo": {
+    "name": "Kwai Clone",
+    "slug": "kwai-clone",
+    "version": "1.0.0",
+    "platforms": ["android"]
+  }
+}

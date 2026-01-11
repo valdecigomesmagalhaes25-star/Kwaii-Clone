@@ -1,0 +1,10 @@
+
+{
+  "appId": "com.kwaiclone.rewards",
+  "appName": "Kwai Clone",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
