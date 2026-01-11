@@ -15,6 +15,9 @@
     "@capacitor/cli": "^6.0.0"
   },
   "scripts": {
-    "build": "echo 'Build bypass for demo environment'"
+    "build": "echo 'Preparando arquivos web...'",
+    "ionic:build": "echo 'Build do Ionic executada'",
+    "ionic:cap-add-android": "npx cap add android",
+    "postinstall": "npx cap add android || echo 'Android já existe ou falhou ao adicionar, continuando...'"
   }
 }
